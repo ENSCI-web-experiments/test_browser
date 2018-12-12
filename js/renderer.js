@@ -1,3 +1,5 @@
+const { ipcRenderer } = require('electron')
+
 let view
 let omni
 
@@ -25,11 +27,16 @@ function updateURL(event) {
             view.loadURL(val)
         } else {
             if (/\./i.test(val) === false || /\s/i.test(val) === true) {
-              view.loadURL('https://www.google.com/search?q=' + encodeURIComponent(val))
+                view.loadURL('https://www.google.com/search?q=' + encodeURIComponent(val))
             } else {
-              view.loadURL('http://' + val)
+                view.loadURL('http://' + val)
             }
         }
+    } else {
+        ipcRenderer.send('type-url', {
+            key: event.key,
+            keyCode: event.keyCode
+        })
     }
 }
 
@@ -46,5 +53,6 @@ function forwardView() {
 }
 
 function updateNav() {
+    ipcRenderer.send('navigate-to', view.src)
     omni.value = view.src
 }
