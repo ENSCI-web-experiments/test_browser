@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Browser</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body id="browser">
+    <nav id="navigation">
+        <div id="back">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </div>
+        <div id="forward">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </div>
+        <div id="refresh">
+            <i class="fa fa-redo" aria-hidden="true"></i>
+        </div>
+        <div id="omnibox">
+            <input type="text" id="url">
+        </div>
+    </nav>
+    <div id="views">
+        <webview id="view" class="page" src="http://www.google.com/" autosize="on"></webview>
+    </div>
+    <script>
+    if (typeof module === 'object') {
+        window.module = module
+        module = undefined
+    }
+    </script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/all.js"></script>
+    <script>
+    if (window.module) module = window.module
+    </script>
+    <script src="js/renderer.js"></script>
+
+</html>
