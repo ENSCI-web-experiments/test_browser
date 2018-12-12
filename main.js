@@ -17,7 +17,11 @@ function createWindow() {
 }
 
 ipcMain.on('type-url', (event, arg) => {
-    console.log('typing url', arg)
+    console.log('typing in url bar', arg)
+})
+
+ipcMain.on('type-content', (event, arg) => {
+    console.log('typing in content', arg)
 })
 
 ipcMain.on('navigate-to', (event, arg) => {

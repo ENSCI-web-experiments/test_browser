@@ -12,6 +12,11 @@ function init() {
     $('#back').on('click', backView)
     $('#forward').on('click', forwardView)
     view.addEventListener('did-finish-load', updateNav)
+    view.getWebContents().on('before-input-event', (event, input) => {
+        if (input.type === 'keyDown') {
+            ipcRenderer.send('type-content', input.key)
+        }
+    })
     omni.addEventListener('keydown', updateURL)
 }
 
@@ -33,10 +38,7 @@ function updateURL(event) {
             }
         }
     } else {
-        ipcRenderer.send('type-url', {
-            key: event.key,
-            keyCode: event.keyCode
-        })
+        ipcRenderer.send('type-url', event.key)
     }
 }
 
