@@ -1,5 +1,7 @@
 const { app, BrowserWindow } = require('electron')
 
+// const SerialPort = require('serialport')
+
 let win
 
 function createWindow () {

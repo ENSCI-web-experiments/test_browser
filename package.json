@@ -4,7 +4,8 @@
   "description": "A minimal Web browser",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "install": "electron-rebuild"
   },
   "keywords": [
     "Electron",
@@ -12,8 +13,13 @@
   ],
   "author": "LePhasme",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "electron-rebuild": "^1.8.2"
+  },
   "dependencies": {
-    "electron": "^3.0.11"
+    "electron": "^3.0.11",
+    "express": "^4.16.4",
+    "serialport": "^7.1.0",
+    "socket.io": "^2.2.0"
   }
 }
